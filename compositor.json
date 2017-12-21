@@ -1,0 +1,85 @@
+{
+  "name": "code-therapy/packages-with-readme-relative-images",
+  "version": "0.1.4",
+  "libraries": {
+    "xv": "^1.1.25"
+  },
+  "title": "Test",
+  "branch": "",
+  "style": {
+    "name": "Williamsburg",
+    "componentSet": {
+      "nav": "nav/BasicNav",
+      "header": "header/LightBannerHeader",
+      "article": "article/ReaderArticle",
+      "footer": "footer/BasicFooter"
+    },
+    "fontFamily": "Montserrat, sans-serif",
+    "heading": {
+      "fontWeight": 600,
+      "letterSpacing": "0.1em"
+    },
+    "colors": {
+      "text": "#346",
+      "background": "#fff",
+      "primary": "#0099e0",
+      "secondary": "#ab61ff",
+      "highlight": "#f7b",
+      "muted": "#fffab3",
+      "border": "#ccd"
+    }
+  },
+  "content": [
+    {
+      "component": "nav",
+      "links": [
+        {
+          "href": "https://github.com/code-therapy/packages-with-readme-relative-images",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://npmjs.com/package/@code-therapy/packages-with-readme-relative-images",
+          "text": "npm"
+        }
+      ]
+    },
+    {
+      "component": "header",
+      "heading": "packages-with-readme-relative-images",
+      "subhead": "The time you included that image in your README.md from a relative path on GitHub and then published to NPM!",
+      "children": [
+        {
+          "component": "ui/TweetButton",
+          "text": "packages-with-readme-relative-images: The time you included that image in your README.md from a relative path on GitHub and then published to NPM!",
+          "url": null
+        },
+        {
+          "component": "ui/GithubButton",
+          "user": "code-therapy",
+          "repo": "packages-with-readme-relative-images"
+        }
+      ],
+      "text": "v0.0.5"
+    },
+    {
+      "component": "article",
+      "metadata": {
+        "source": "github.readme"
+      },
+      "html": "<h1>Publishing a README using relative image paths from GitHub to NPM!</h1>\n<hr>\n<p><strong>SOLVED:</strong> A previous solution that made it possible to render SVG files on\nGitHub (using relative URLs) seems to work on raw.githubusercontent.com by\nmaking it correctly set the Content-Type. So, in order to render SVG images that\nuse relative paths in markdown and have them render properly on NPM &amp; Yarn, you\nsimply have to append this query to your relative path: <code>?sanitize=true</code>.</p>\n<hr>\n<p><strong>UPDATE:</strong> <em>Images have been updated to show the difference between unsanitized and\nsanitized (adding <code>?sanitize=true</code>) for svg images with relative &amp; absolute URLs\nserved from GitHub.</em></p>\n<hr>\n<h2><strong>Chapter 1:</strong> Authoring</h2>\n<p>In GitHub-Flavoured Markdown (GFM), when you want to include an image using its\nrelative path you do either this:</p>\n<blockquote>\n<p>An <em>inlined</em> image:</p>\n<pre>![<span class=\"hljs-string\">description of the image</span>](<span class=\"hljs-link\">relative/path/to/image.ext</span>)</pre></blockquote>\n<p>or this:</p>\n<blockquote>\n<p>A <em>referenced</em> image with a relative path:</p>\n<pre>![<span class=\"hljs-string\">description of the image</span>][<span class=\"hljs-symbol\">asset-1</span>]</pre><p>Where somewhere in the file (not sure if the order is a factor):</p>\n<pre>[<span class=\"hljs-symbol\">asset-1</span>]: <span class=\"hljs-link\">relative/path/to/image.ext</span></pre></blockquote>\n<p>Both GitHub and VSCode will resolve those paths relative to the markdown source\npath. So if you&apos;ve been down this path, you, myself included, might have\nconcluded that this is the behaviour to be expected when using relative paths\nin GFM.</p>\n<p>But then you try to figure out how to reference a particular branch or commit\nfor your assets, and things start going insane, and you might have decided to\ncut your losses just to keep things simple, as I did. Sparing details, you are\nessentially choosing between hard-linked githubusercontent or rawgit URLs which\ndon&apos;t fork or relative paths and maybe subtrees and those fork ugly but fork.</p>\n<p>So between relative and absolute, you would naturally opt for relative and you\nrepeat this to yourself a few times so that it sticks, before moving on:</p>\n<blockquote>\n<p>I promise to only use relative paths from now on!</p>\n</blockquote>\n<h2><strong>Chapter 2:</strong> Publishing</h2>\n<p>Now you have your package all cooked up and ready to go and fire this:</p>\n<pre><span class=\"hljs-built_in\">npm</span> publish</pre><p>or that:</p>\n<pre><span class=\"hljs-attribute\">yarn publish</span></pre><p>Sweet, right&#x2026; not when you get something like:</p>\n<blockquote>\n<p>you are awesome but does your package really work if you can&apos;t even get the\ndamn thing to render correctly on npm and yarn! <em>maybe you should stick to\nyour day job</em> and <strong>I will go ahead and use that other one that looks right</strong></p>\n</blockquote>\n<p>Yes, that is what you will eventually be thinking that people are thinking when\nthey look at your broken README.md on both Yarn &amp; NPM (as of this moment),\nbecause not all images will render like this and we will see why in a bit.</p>\n<p>But you figure it has to be that relative paths are being resolved relative to\nyarnpkg.com or npm.com and that is an okay assumption, dead-wrong but okay, but\nhonestly, those guys do a lot of work trying to get your relative stuff to be\nas relative as if they were on GitHub&apos;s own rendering. Sadly, this last portion\ntakes a lot of investigating to appreciate, and like me, I think you just want\nto keep some of your remaining sanity rid yourself of relative paths and opt for\nabsolute paths (what could go wrong there aside from the obvious).</p>\n<p>So you if you opt to remain relativly sane-minded like myself most of the time,\nyou repeat this to yourself a few times, before moving on:</p>\n<blockquote>\n<p>I promise to only use absolute paths from now on!</p>\n</blockquote>\n<h2><strong>Chapter 3:</strong> Republishing</h2>\n<p>Wow, it haz downloadz for a few days in a row, and you even start getting that\nawesome feeling when someone files their first issue:</p>\n<blockquote>\n<p><em>User:</em></p>\n<blockquote>\n<p>It is broken, and I hate you.</p>\n</blockquote>\n<p><em>You:</em></p>\n<blockquote>\n<p>I love you so much, how can I make you happier.</p>\n</blockquote>\n<p><em>User:</em></p>\n<blockquote>\n<p>Fix that shim or polyfill it up your stack</p>\n</blockquote>\n<p><em>You:</em></p>\n<blockquote>\n<p>I see. And how does that make you feel? Did you try this &#x2026;</p>\n</blockquote>\n<p><em>User:</em></p>\n<blockquote>\n<p>Mother-bugger, people need to know that, here is a patch (aka pull-request).</p>\n</blockquote>\n<p><em>You:</em></p>\n<blockquote>\n<p>Oh, I see, you are healing by helping others, I will follow that. Merged!</p>\n</blockquote>\n<p><em>User:</em></p>\n<blockquote>\n<p>Mother-bugger, what happened to my figures?</p>\n</blockquote>\n<p><em>You:</em></p>\n<blockquote>\n<p>Mother-bugger, I&apos;ve seen that before, let&apos;s stick to absolute paths (again).</p>\n</blockquote>\n</blockquote>\n<p>So you decide to learn from this, and you repeat this to yourself a few times,\nbefore moving on:</p>\n<blockquote>\n<p>I promise to only use text from now on, maybe html-served links, but my docs\nwill be as bland and possible and if anyone touches my assets I will have them\narrested.</p>\n</blockquote>\n<h2><strong>Reflection:</strong></h2>\n<p><em>Quick Comparison: </em></p>\n<blockquote>\n<table>\n<thead>\n<tr>\n<th></th>\n<th>Relative SVG <em>fixed</em></th>\n<th>Relative PNG</th>\n<th>Absolute SVG <em>fixed</em></th>\n<th>Absolute PNG</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><em>Referenced</em></td>\n<td><img src=\"image.svg?sanitize=true\"></td>\n<td><img src=\"image.png\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg?sanitize=true\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\"></td>\n</tr>\n<tr>\n<td><em>Inlined unsanitized</em></td>\n<td><img src=\"image.svg\"></td>\n<td><img src=\"image.png\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\"></td>\n</tr>\n<tr>\n<td><em>Inlined sanitized</em></td>\n<td><img src=\"image.svg?sanitize=true\"></td>\n<td><img src=\"image.png\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg?sanitize=true\"></td>\n<td><img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\"></td>\n</tr>\n<tr>\n<td></td>\n<td></td>\n<td></td>\n<td></td>\n</tr>\n</tbody>\n</table>\n</blockquote>\n<p>Some might say that the problem is that you are using SVG, but that would be a\nlittle embarrasing to say out loud!</p>\n<p>Some people may eventually hate that last bit and decide to do some mindfulness\nand reflection, and I happen to be one of those people.</p>\n<p>Here is <a href=\"https://github.com/npm/marky-markdown/blob/3cf46914cfc3a8b20847b3c190862239dbe0ba45/lib/plugin/github.js#L8-L13\">what npm does (aka marky-markdown)</a>:</p>\n<pre><span class=\"hljs-keyword\">var</span> DEFAULT_REF = <span class=\"hljs-string\">&apos;HEAD&apos;</span>\n\n<span class=\"hljs-function\"><span class=\"hljs-keyword\">function</span> <span class=\"hljs-title\">buildImageUrl</span> (<span class=\"hljs-params\">repository, url</span>) </span>{\n  <span class=\"hljs-keyword\">var</span> prefix = <span class=\"hljs-string\">&apos;https://raw.githubusercontent.com/&apos;</span>\n  <span class=\"hljs-keyword\">return</span> prefix + path.join(repository.user, repository.repo, DEFAULT_REF, url.href)\n}</pre><p>Here is <a href=\"https://github.com/yarnpkg/website/blob/e155b85428e5ebed5eec9302a5179e47486dc07c/js/src/lib/Details/Markdown.js#L7-L42\">what yarn does (aka yarnpkg/website)</a>:</p>\n<pre><span class=\"hljs-keyword\">const</span> GITHUB = {\n    <span class=\"hljs-attr\">main</span>: <span class=\"hljs-string\">&apos;https://github.com&apos;</span>,\n    <span class=\"hljs-attr\">raw</span>: <span class=\"hljs-string\">&apos;https://raw.githubusercontent.com&apos;</span>,\n};\n\n<span class=\"hljs-comment\">/* &#x2026; then &#x2026; */</span>\n\n<span class=\"hljs-keyword\">const</span> { user, project, path, head } = githubRepo\n<span class=\"hljs-keyword\">const</span> prefix = <span class=\"hljs-function\">(<span class=\"hljs-params\">href, base</span>) =&gt;</span>\n    <span class=\"hljs-comment\">// prefixURL is a util function that does what it sounds like it does.</span>\n    prefixURL(href, { base, user, project, <span class=\"hljs-attr\">head</span>: head ? head : <span class=\"hljs-string\">&apos;master&apos;</span>, path, });\n\n<span class=\"hljs-comment\">/* &#x2026; then &#x2026; */</span>\n\nrenderer.image = <span class=\"hljs-function\">(<span class=\"hljs-params\">href, title, text</span>) =&gt;</span>\n    <span class=\"hljs-string\">`&lt;img src=&quot;<span class=\"hljs-subst\">${prefix(href, GITHUB.raw)}</span>&quot; title=&quot;<span class=\"hljs-subst\">${title}</span>&quot; alt=&quot;<span class=\"hljs-subst\">${text}</span>&quot;/&gt;`</span>;</pre><p>Remember that mindfulness is not about judging, only recognizing the strong\nemotions that this had elicited and sitting with them knowing it is okay before\nletting them go to move on. <strong>Sure, enough of that, thanks, time for action.</strong></p>\n<h2><strong>Conclusion:</strong></h2>\n<ul>\n<li><p><strong>NPM &amp; Yarn:</strong> take your relative URLs and they have no clue which git reference\nthey resolve from, whereas GitHub knows.*</p>\n</li>\n<li><p><strong>Yarn:</strong> uses algolia to get your package&apos;s raw README markdown in a more\nglorified <code>package.json</code>-like XHR response, then to head or not-to-head, all\ndone client-side and very efficiently in my experience, which is nothing\nshort of facinating.</p>\n<p>An advantage of having it on the client-side here is that you can actively\nparticipate in <a href=\"yarn-example-issue\">debugging and resolving your own issue</a>\ninstead of waiting till someone can actually play around with the code-base\nin some test branch until they can reproduce the issue and isolate the bug\ngoing only what they can fathom from what you could deem important to them.</p>\n</li>\n<li><p><strong>NPM:</strong> uses own backend to prerender your README using marky-markdown, and\nto be honest, there is more to what markey does than I let on, including a\nplugin to use cdn when resolving relative images, but there is no way to tell\nif that plugin is used in production until I encounter such an image (but\nnone so far for me).</p>\n<p>Server-side here can be a simple act of generousity and sense of community\nsince it takes the load off client-side where caching can really be a benefit\nbut there is also the fact that this is the actual registry, and one would\nexpect that the registry itself should be the source of the one consistent\ntruth on anything in the registry.</p>\n</li>\n<li><p><strong>GitHub:</strong> seems to not have a one-size strategy when serving files from\n<code>raw.githubusercontent.com</code>, treating <a href=\"gh-png\">PNG as <code>image/png</code></a>\nand <a href=\"gh-svg\">SVG as &apos;text/plain&apos;</a> as this should prevent potential\nmalicious content from executing client-side, or so becomes the rhetoric.</p>\n<p>While there is an idea that GitHub simply wants to discourage people from\noverloading repos with production requests of live content, consider the fact\nthat a PNG is most likely going to be larger than a well-formed SVG, and that\nits footprint grows exponentially with it&apos;s dimensions. You avoid this in\nproduction because GitHub is in the repo business, not a CDN.</p>\n</li>\n<li><p><strong>RawGit:</strong> if you accept the practical limitations on uptime that comes with\nthe fact that this is an awesome free service that doing it&apos;s best effort,\nyou can get properly MIME-typed files but to use them, you currently need\nabsolute URLs to work across the board (until it doesn&apos;t).</p>\n<p>There is magic in how RawGit, a true CDN service, helps you split-hairs when\ndeciding on the URL that best resolves to an asset across its history which\ncan also be <strong>permanently</strong> cached (as it should) for production when served\nfrom <code>cdn.rawgit.com/&#x2026;</code> versus <code>rawgit.com/&#x2026;</code>. Those are functionally two\nvery different services that cover most production and development scenarios.</p>\n<blockquote>\n<p>|                       |      SVG     |      PNG     |\n|:----------------------|:------------:|:------------:|\n| raw.githubusercontent <em>unsanitized</em> | <img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg\">  | <img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\">  |\n| raw.githubusercontent <em>sanitized</em> | <img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg?sanitize=true\">  | <img src=\"https://raw.githubusercontent.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\">  |\n| rawgit                | <img src=\"https://rawgit.com/code-therapy/packages-with-readme-relative-images/HEAD/image.svg\"> | <img src=\"https://rawgit.com/code-therapy/packages-with-readme-relative-images/HEAD/image.png\"> |\n| cdn.rawgit            | <img src=\"https://cdn.rawgit.com/code-therapy/packages-with-readme-relative-images/636b6b8616eed31d6333ce98aa414ccd9a47b477/image.svg\"> | <img src=\"https://cdn.rawgit.com/code-therapy/packages-with-readme-relative-images/636b6b8616eed31d6333ce98aa414ccd9a47b477/image.png\"> |\n|                       |              |              |</p>\n</blockquote>\n<p><strong>Note:</strong> Just keep in mind that if you overtax them, you will be throttled or\neven banned (ie no more content served from repos under from your user or\norganization.</p>\n</li>\n<li><p><strong>You:</strong> Maybe file an issue, write a post, or pick absolute, or stick with\nrelative paths&#x2026; Nope, I just need a warm bath and maybe my next project will\nnot even require a README :)</p>\n</li>\n</ul>\n"
+    },
+    {
+      "component": "footer",
+      "links": [
+        {
+          "href": "https://github.com/code-therapy/packages-with-readme-relative-images",
+          "text": "GitHub"
+        },
+        {
+          "href": "https://github.com/code-therapy",
+          "text": "code-therapy"
+        }
+      ]
+    }
+  ]
+}
