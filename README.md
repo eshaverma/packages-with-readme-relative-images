@@ -187,7 +187,7 @@ letting them go to move on. **Sure, enough of that, thanks, time for action.**
   short of facinating.
 
   An advantage of having it on the client-side here is that you can actively
-  participate in [debugging and resolving your own issue](yarn-example-issue)
+  participate in [debugging and resolving your own issue][yarn-example-issue]
   instead of waiting till someone can actually play around with the code-base
   in some test branch until they can reproduce the issue and isolate the bug
   going only what they can fathom from what you could deem important to them.
@@ -205,8 +205,8 @@ letting them go to move on. **Sure, enough of that, thanks, time for action.**
   truth on anything in the registry.
 
 * **GitHub:** seems to not have a one-size strategy when serving files from
-  `raw.githubusercontent.com`, treating [PNG as `image/png`](gh-png)
-  and [SVG as 'text/plain'](gh-svg) as this should prevent potential
+  `raw.githubusercontent.com`, treating [PNG as `image/png`][gh-png]
+  and [SVG as 'text/plain'][gh-svg] as this should prevent potential
   malicious content from executing client-side, or so becomes the rhetoric.
 
   While there is an idea that GitHub simply wants to discourage people from
